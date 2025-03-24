@@ -129,7 +129,7 @@ const sendButton = document.getElementById('sendButton');
 const chatMessages = document.getElementById('chatMessages');
 const chips = document.querySelectorAll('.chip');
 
-function sendMessage() {
+async function sendMessage() {
     const message = messageInput.value.trim();
     if (message === '') return;
     
@@ -156,32 +156,41 @@ function sendMessage() {
     chatMessages.appendChild(typingIndicator);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     
-    // Simulate bot response after delay
-    setTimeout(() => {
+    try {
+        // Make API call to backend
+        const response = await fetch('/ask', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: message })
+        });
+        
+        const data = await response.json();
+        
         // Remove typing indicator
         chatMessages.removeChild(typingIndicator);
         
         // Add bot response
         const botResponseDiv = document.createElement('div');
         botResponseDiv.className = 'message bot-message';
-        
-        // Sample Computer Networks responses based on keywords
-        const cnResponses = [
-            "The OSI model consists of seven layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. Each layer provides specific functions in the data communication process.",
-            "TCP/IP is the fundamental suite of protocols that enables internet communication. It consists of four layers: Link, Internet, Transport, and Application.",
-            "Routing is the process of selecting paths in a network to send data packets. Common routing protocols include OSPF, BGP, and RIP.",
-            "Subnetting is the practice of dividing a network into smaller network segments. It helps with network management, security, and addressing efficiency.",
-            "Network security involves various measures like firewalls, encryption, authentication, and intrusion detection systems to protect network infrastructure and data.",
-            "Wireless networks use radio waves to transmit data between devices. Common standards include Wi-Fi (IEEE 802.11), Bluetooth, and cellular networks.",
-            "IPv4 uses 32-bit addresses while IPv6 uses 128-bit addresses. IPv6 was developed to address the IPv4 address exhaustion problem."
-        ];
-        
-        botResponseDiv.textContent = cnResponses[Math.floor(Math.random() * cnResponses.length)];
+        botResponseDiv.textContent = data.answer;
         chatMessages.appendChild(botResponseDiv);
         
-        // Scroll to bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 1500);
+    } catch (error) {
+        console.error('Error:', error);
+        // Remove typing indicator
+        chatMessages.removeChild(typingIndicator);
+        
+        // Show error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'message bot-message error';
+        errorDiv.textContent = 'Sorry, there was an error processing your request. Please try again.';
+        chatMessages.appendChild(errorDiv);
+    }
+    
+    // Scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 // Event listeners

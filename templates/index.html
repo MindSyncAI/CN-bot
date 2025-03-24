@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Networks Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-animation" id="backgroundAnimation"></div>
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="chat-title">
+                        <h1>CN Assistant</h1>
+                        <p>Computer Networks</p>
+                    </div>
+                </div>
+                <div class="chat-controls">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hello! I'm your Computer Networks Assistant. Ask me anything about network protocols, topologies, or technologies!
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <div class="chip-container">
+                    <div class="chip">OSI Model</div>
+                    <div class="chip">TCP/IP</div>
+                    <div class="chip">Routing</div>
+                    <div class="chip">Subnetting</div>
+                    <div class="chip">Network Security</div>
+                    <div class="chip">Wireless Networks</div>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="chat-input" placeholder="Type your message here..." id="messageInput">
+                    <i class="fas fa-paper-plane input-icon" id="sendButton"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

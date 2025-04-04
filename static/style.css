@@ -463,3 +463,91 @@ body::before {
         max-width: 90%;
     }
 }
+
+/* Markdown Styles */
+.message.bot-message {
+    line-height: 1.6;
+}
+
+.message.bot-message p {
+    margin-bottom: 1em;
+}
+
+.message.bot-message ul,
+.message.bot-message ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.message.bot-message li {
+    margin-bottom: 0.5em;
+}
+
+.message.bot-message code {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.message.bot-message pre {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1em 0;
+}
+
+.message.bot-message pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.message.bot-message blockquote {
+    border-left: 4px solid #ccc;
+    margin: 1em 0;
+    padding-left: 1em;
+    color: #666;
+}
+
+.message.bot-message h1,
+.message.bot-message h2,
+.message.bot-message h3,
+.message.bot-message h4,
+.message.bot-message h5,
+.message.bot-message h6 {
+    margin: 1em 0 0.5em 0;
+    font-weight: 600;
+}
+
+.message.bot-message table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.message.bot-message th,
+.message.bot-message td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.message.bot-message th {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode styles */
+.dark-mode .message.bot-message code,
+.dark-mode .message.bot-message pre {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .message.bot-message blockquote {
+    border-left-color: #666;
+    color: #ccc;
+}
+
+.dark-mode .message.bot-message th {
+    background-color: rgba(255, 255, 255, 0.1);
+}

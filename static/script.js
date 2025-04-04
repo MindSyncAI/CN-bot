@@ -174,7 +174,7 @@ async function sendMessage() {
         // Add bot response
         const botResponseDiv = document.createElement('div');
         botResponseDiv.className = 'message bot-message';
-        botResponseDiv.textContent = data.answer;
+        botResponseDiv.innerHTML = data.answer;
         chatMessages.appendChild(botResponseDiv);
         
     } catch (error) {

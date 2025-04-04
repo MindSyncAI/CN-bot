@@ -20,3 +20,6 @@ sentence-transformers
 transformers
 torch
 
+# Markdown
+markdown==3.5.2
+
